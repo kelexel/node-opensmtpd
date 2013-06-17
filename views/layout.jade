@@ -1,0 +1,24 @@
+!!!5
+html
+  head
+    title #{title} - Bikes!
+    link(rel='stylesheet', href='/assets/css/style.css')
+    block scripts
+      //- script(src='#{url_cdn}/mootools-core-1.4.5-full-nocompat-yc.js')
+      //- script(src='#{url_cdn}/mootools-more-1.4.0.1.js')
+      //- script(src='#{url_cdn}/company-copublish.js')
+      //- script(src='#{url_cdn}/raphael-min.js')
+      //- script(src='#{url_socketio}/socket.io/socket.io.js')
+      //- script(src='#{url_socketio}/assets/js/BikeSocket.js')
+      //- script(src='#{url_socketio}/assets/js/BikeArena.js')
+      //- script(src='#{url_socketio}/assets/js/init.js')
+  body
+    header
+      h1 opensmtpd node.js frontend!
+    .container
+      .main-content
+        block content
+      .sidebar
+        block sidebar
+    footer
+      p <a href="http://nodejs.org" target="_blank">node rocks</a> | <a href="https://github.com/kelexel/node-opensmtpd" target="_blank">sources</a>

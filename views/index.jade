@@ -1,0 +1,50 @@
+extend layout
+block content
+  p: form(method='post', action='', id='enroll')
+      | Please type in a biker name:
+      label(for='f_playerName'): input(id='f_playerName', name='f_playerName', maxlength='12', data-validators='not-empty maxLength:12')
+      button(type='button', class='submit'): | play
+  div#status 
+    span.counter 
+      em: | 0 
+      |  sec
+    h2#arenaLog
+    button(id='insertCoin', class='hidden') Replay!
+
+  div#grid
+
+block sidebar
+  h2 Players
+  ul#players
+  h2 Bonuses
+  ul#legends
+    li
+      em: |1-4 
+      |Adds n blocks to your bike
+    li  
+      em: |- 
+      |Removes one block from your bike
+    //- li
+    //-   em: |+
+    //-   |Adds one block from your bike
+    li
+      em: |!
+      |Block you cannot pass
+    li
+      em: ||
+      |Turn on "trail mode", active until you pick another bonus
+    li
+      em: |*
+      |Turn on "star mode", a.k.a. be invicinble for 10 moves, active until you pick another bonus
+    li
+      em: |w 
+      |Warps your bike somewhere on the grid
+    li
+      em: |z 
+      |Resets the player's score
+    li
+      em: |/ 
+      |Divides player's size by 2
+    li
+      em: |x 
+      |Instant death
