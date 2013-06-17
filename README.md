@@ -6,12 +6,15 @@ This project aims to provide an admin and user interface to opensmtpd virtualuse
 
 It requires node.js >=0.10.6, prime, mongodb, and a heavily cusom brewed version of Mongoose Admin
 
+(see package.json for a full list)
+
 ### License
- ## node-opensmtpd Admin "Prime Edition"
+
+## node-opensmtpd Admin "Prime Edition"
  * Copyright (c) 2013 Rudolph Sand (rudolph.sand@gmail.com)
  * MIT Licensed
 
- ## Mongoose Admin "Prime Edition"
+## Mongoose Admin "Prime Edition"
  * Copyright (c) 2013 Rudolph Sand (rudolph.sand@gmail.com)
  * MIT Licensed
  * Based on:
