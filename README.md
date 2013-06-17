@@ -11,20 +11,22 @@ It requires node.js >=0.10.6, prime, mongodb, and a heavily cusom brewed version
 ### License
 
 ## node-opensmtpd Admin "Prime Edition"
+
  * Copyright (c) 2013 Rudolph Sand (rudolph.sand@gmail.com)
  * MIT Licensed
 
 ## Mongoose Admin "Prime Edition"
+
  * Copyright (c) 2013 Rudolph Sand (rudolph.sand@gmail.com)
  * MIT Licensed
  * Based on:
- *		Mongoose Admin - newleafdigital FORK
- *		Project URL: https://github.com/newleafdigital/mongoose-admin/tree/refactor
- *		Copyright ?
- *		MIT Licensed
- *		Based on:
- *			Mongoose Admin
- *			Copyright (c) 2011 Marc Campbell (marc.e.campbell@gmail.com) * Copyright (c) 2013 Rudolph Sand (rudolph.sand@gmail.com)
- *			MIT Licensed
+ * Mongoose Admin - newleafdigital FORK
+ * Project URL: https://github.com/newleafdigital/mongoose-admin/tree/refactor
+ * Copyright ?
+ * MIT Licensed
+ * Based on:
+ * Mongoose Admin
+ * Copyright (c) 2011 Marc Campbell (marc.e.campbell@gmail.com) * Copyright (c) 2013 Rudolph Sand (rudolph.sand@gmail.com)
+ * MIT Licensed
  
- #####
+#
