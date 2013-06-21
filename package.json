@@ -1,23 +1,31 @@
 {
 	"name": "node-opensmtpd",
 	"description": "a node.js opensmtpd frontend",
+	"bin": "./bin/run.sh",
 	"version": "0.0.2",
 	"private": true,
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/kelexel/node-opensmtpd.git"
+	},
 	"dependencies": {
-	"express": ">=3.0.6",
-	"stylus": ">=0.32.1",
-	"nib": ">=0.9.1",
-	"jade": ">=0.28.2",
-	"connect-redis": ">=1.4.5",
-	"prime": "0.1.0",
-	"winston": "*",
-	"cookie": ">=0.0.5",
-	"crypto": ">=0.0.3",
-	"connect": ">=2.7.3",
-	"mongodb": ">=1.3.10",
-	"mongoose": ">=3.6.11",
-	"mongoose-troop": ">=0.0.8",
-	"bcrypt": ">=0.7.6",
-	"jquery": "*"
-	}
+		"express": ">=3.0.6",
+		"stylus": ">=0.32.1",
+		"nib": ">=0.9.1",
+		"jade": ">=0.28.2",
+		"connect-redis": ">=1.4.5",
+		"prime": "0.1.0",
+		"winston": "*",
+		"cookie": ">=0.0.5",
+		"crypto": ">=0.0.3",
+		"connect": ">=2.7.3",
+		"mongodb": ">=1.3.10",
+		"mongoose": ">=3.6.11",
+		"mongoose-troop": ">=0.0.8",
+		"forms": "https://github.com/kelexel/forms/archive/v0.2.2-data.tar.gz",
+		"forms-mongoose": "https://github.com/kelexel/forms-mongoose/archive/npm-friendly.tar.gz",
+		"bcrypt": ">=0.7.6",
+		"jquery": "*"
+	},
+	"engine": "node >= 0.10.6"
 }

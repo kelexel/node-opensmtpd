@@ -1,79 +1,87 @@
-script(type='text/javascript')
-  $(document).ready(function() {
-    $('#saveButton').click(function() {
-      var method = $('#document_id').val().length > 0 ? 'PUT' : 'POST';
-      $.ajax({
-        type:method,
-        url:'#{rootPath}/json/model/#{modelName}/document',
-        data:$('#document').serialize(),
-        success:function(result) {
-          window.location.href = '#{rootPath}/model/' + result.collection;
-        },
-        error:function(xhr, textStatus) {
-          alert('Unable to save');
-        }
-      });
-      return false;
-    });
-    $('#deleteButton').click(function() {
-      $.ajax({
-        type:'DELETE',
-        url:'#{rootPath}/json/model/#{modelName}/document?document_id=' + encodeURIComponent($('#document_id').val()),
-        success:function(result) {
-          window.location.href = '/model/' + result.collection;
-        },
-        error:function(xhr, textStatus) {
-          alert('Unable to delete');
-        }
-      });
-    });
+extends adminlayout
 
-    $('.linked_model').change(function() {
-      var self = $(this);
-      if ($(this).val().length === 0) {
-        $('#' + self.attr('rel')).hide();
-      } else {
+block content
+  script.
+    $(document).ready(function() {
+      $('#saveButton').click(function() {
+        var method = $('#document_id').val().length > 0 ? 'PUT' : 'POST';
         $.ajax({
-          type:'GET',
-          url:'#{rootPath}/json/model/' + $(this).val() + '/linkedDocumentsList',
+          type:method,
+          url:'#{rootPath}/json/model/#{modelName}/document',
+          data:$('#document_id').serialize(),
           success:function(result) {
-            console.log(self.attr('rel'));
-            var documentList = $('#' + self.attr('rel'));
-            documentList.show();
-            documentList.empty();
-            $.each(result, function(k, v) {
-              var itemDisplay = '';
-              for (field in v) {
-                if (field != '_id') {
-                  if (itemDisplay.length > 0) {
-                    itemDisplay += ' -- ';
-                  }
-                  itemDisplay += v[field];
-                }
-              }
-
-              var option = $('<option />').attr('value', v['_id']).html(itemDisplay);
-              documentList.append(option);
-            });
-            documentList.show();
+            window.location.href = '#{rootPath}/model/' + result.collection;
           },
           error:function(xhr, textStatus) {
-            alert('Unable to get documents');
+            alert('Unable to save');
           }
         });
+        return false;
+      });
+      $('#deleteButton').click(function() {
+        $.ajax({
+          type:'DELETE',
+          url:'#{rootPath}/json/model/#{modelName}/document?document_id=' + encodeURIComponent($('#document_id').val()),
+          success:function(result) {
+            window.location.href = '#{rootPath}/model/' + result.collection;
+          },
+          error:function(xhr, textStatus) {
+            alert('Unable to delete');
+          }
+        });
+      });
+      //- $('.linked_model').change(function() {
+        //- var self = $(this);
+      if ($('.linked_document')) {
+        $('.linked_document').each(function(k, field) {
+          //- var self = $('.linked_model');
+          var self = $(field);
+          //- if ($(self).val().length === 0) {
+          //-   $('#' + self.attr('rel')).hide();
+          //- } else {
+            $.ajax({
+              type:'GET',
+              url:'#{rootPath}/json/model/' + self.attr('data-model') + '/linkedDocumentsList',
+              success:function(result) {
+                var documentList = self.find('select');
+                //- documentList.show();
+                documentList.empty();
+                $.each(result, function(k, v) {
+                  var itemDisplay = '';
+                  for (field in v) {
+                    if (field != '_id' && typeof v[field] != 'object') {
+                      if (itemDisplay.length > 0) {
+                        itemDisplay += ' -- ';
+                      }
+                      itemDisplay += v[field];
+                    }
+                  }
+                  var option = $('<option />').attr('value', v['_id']).html(itemDisplay);
+                  documentList.append(option);
+                });
+                documentList.show();
+              },
+              error:function(xhr, textStatus) {
+                alert('Unable to get documents');
+              }
+            });
+          //- }
+        });
       }
+      //- });
     });
-  });
+  
+  div#content.container_16.clearfix
+    div.grid_16.clearboth
+      h1!= action+' '+modelName
+      form(id="document_id")!= form.toHTML()
 
-div#content.container_16.clearfix
-  div.grid_16.clearboth!= renderedDocument
-  div.grid_16.clearboth
-    p.submit
-      input#saveButton(type='submit', value='Save')
-      | &nbsp;
-      input#cancelButton(type='button', value='Cancel')
-      - if (allowDelete)
-          span(style='margin-left:20px;')
-            input#deleteButton(type='button', value='Delete')
-div#foot
-  a(href='http://mongoose-admin.com') Mongoose-Admin
+    //- div.grid_16.clearboth!= renderedDocument
+    div.grid_16.clearboth
+      p.submit
+        input#saveButton(type='submit', value='Save')
+        | &nbsp;
+        input#cancelButton(type='button', value='Cancel')
+        - if (allowDelete)
+            span(style='margin-left:20px;')
+              input#deleteButton(type='button', value='Delete')

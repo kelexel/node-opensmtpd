@@ -1,0 +1,39 @@
+extends adminlayout
+
+block content
+  script.
+    $(document).ready(function() {
+      $('#saveButton').click(function() {
+        var method = 'POST';
+        $.ajax({
+          type:method,
+          url:'#{rootPath}/json/login',
+          data:$('#document').serialize(),
+          success:function(result) {
+            if (result.auth != 'ok') 
+              alert(result.log);
+            else
+              window.location.href = '#{rootPath}/';
+          },
+          error:function(xhr, textStatus) {
+            alert('Unable to login (wrong crendentials ?)');
+          }
+        });
+        return false;
+      });
+    });
+  div#content.container_16.clearfix
+    div#page-heading
+      h1 #{modelName}
+    div.grid_16
+      form(id="document")
+        div(class="field required") 
+          label(class="required_label",for="username") Login
+          input(type="text", name="username", id="username")
+        div(class="field required") 
+          label(class="required_label",for="password") Password
+          input(type="password", name="password", id="password")
+    div.grid_16
+      p(class="submit")
+        input(id='saveButton', type="submit", value="Login")
+
